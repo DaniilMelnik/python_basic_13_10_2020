@@ -20,9 +20,9 @@
 }
 """
 items = []
-item_data = {"название": "", "цена": "", "количество": "", "eд": ""}
 item_number = 0
 while True:  # Заполнение данных
+    item_data = {"название": "", "цена": "", "количество": "", "eд": ""}
     item_data["название"] = input("Введите название товара: ")
     item_data["цена"] = input("Введите цену товаров: ")
     item_data["количество"] = input("Введите количество товаров: ")
@@ -37,17 +37,16 @@ print("Данные по товарам:")
 for item in items:
     print(item)
 
-item_analytics = item_data
+item_analytics = {"название": "", "цена": "", "количество": "", "eд": ""}
 
 for key in item_data.keys():  # Сбор аналитики
     tmp_list = []
     for item in items:
         tmp_list.append(item[1][key])
     item_analytics[key] = tmp_list
-    #item_data["цена"] = item[1]["цена"]
-    #item_data["количество"] = item[1]["количество"]
-    #item_data["eд"] = item[1]["eд"]
+    #print(item_analytics[key])
+    #print(tmp_list)
 
-print("аналитика по товарам:")
-for item in item_analytics:
-    print(item)
+print("\nаналитика по товарам:")
+for key in item_analytics.keys():
+    print(key, ": ", item_analytics[key], sep="")
