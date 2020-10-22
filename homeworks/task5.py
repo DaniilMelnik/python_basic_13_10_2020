@@ -6,24 +6,28 @@
 Но если вместо числа вводится специальный символ, выполнение программы завершается.
 Если специальный символ введен после нескольких чисел, то вначале нужно добавить сумму этих чисел к полученной ранее сумме и после этого завершить программу.
 """
-# решение в лоб
-sum_var = 0
-output = False
-while True:
-    user_data = input("Введите числа разделенный проблом(q для выхода): ")
-    data_list = user_data.split(' ')
-    for el in data_list:
-        if el == 'q':
-            output = True
-            break
-        else:
-            try:
-                sum_var += int(el)
-            except:
-                pass
-    print("Общая сумма: ", sum_var)
-    if output == True:
-        break
 
+def input_data():
+    user_data = input("Введите числа разделенные пробелом(q для выхода): ")
+    data_list = user_data.split(' ')
+    sum_var = 0
+    for el in data_list:
+        try:
+            sum_var += int(el)
+        except:
+            if el == 'q':
+                yield sum_var, True
+            print("введено не число")
+            pass
+    yield sum_var, False
+
+sum_all = 0
+stop_flag = False
+while True:
+    result, stop_flag = next(input_data())
+    sum_all += result
+    print("Общая сумма: ", sum_all)
+    if  stop_flag == True:
+        break
 
 
