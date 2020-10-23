@@ -21,6 +21,9 @@ def my_max(arg1, arg2, *args):
 
 
 def my_func(a, b, c):
+    """
+    возвращает сумму наибольших двух аргументов
+    """
     return my_max(a + b, a + c, b + c)
 
 

@@ -7,14 +7,30 @@
 """
 
 def my_func(x, y):
+    """
+    возведение x в степень y
+    :return: x ** y
+    """
     return x ** y
 
 def my_func_v2(x, y):
+    """
+    возведение x в степень y, с ограничением по аргументам
+    :param x: действительное положительное число
+    :param y: целое отрицательное число
+    :return: x ** y
+    """
+    if type(y) != int:
+        raise TypeError
+    if y > 0:
+        raise ValueError
     result = x
     while y < -1:
         result *= x
         y += 1
     return 1/result
 
-print(my_func(4.23,-1))
-print(my_func_v2(4.23,-1))
+print(my_func(4.23,-2))
+
+print(my_func_v2(4.23,-2))
+
