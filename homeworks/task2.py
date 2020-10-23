@@ -3,8 +3,7 @@
 Функция должна принимать параметры как именованные аргументы. Реализовать вывод данных о пользователе одной строкой.
 """
 
-def output(**kwargs):
-    for key, value in kwargs.items():
-        print(key, ': ', value,sep='',end=' | ')
+def show_user_data(name, surname, birth_year, sity, e_mail, phone):
+    print(f"name = {name}, surname = {surname}, birth_year = {birth_year}, sity = {sity}, e_mail = {e_mail}, naphoneme = {phone}")
 
-output(имя='Иван',Фамилия='Иванович',год_рождения=1900, город_проживания='Иваново', email='IvanovIvan@mail.ru',телефон='89876543210')
+show_user_data(surname='Иванович',name='Иван',birth_year=1900, sity='Иваново', e_mail='IvanovIvan@mail.ru',phone='89876543210')
