@@ -7,32 +7,33 @@
 Если специальный символ введен после нескольких чисел, то вначале нужно добавить сумму этих чисел к полученной ранее сумме и после этого завершить программу.
 """
 
-def input_data():
-    """
-    генератор ввода чисел через пробел, нечисловые данные игнорируются.
-    В случае ввода q выполнение прекращается
-    :return: сумма введеных чисел
-    """
-    user_data = input("Введите числа разделенные пробелом(q для выхода): ")
-    data_list = user_data.split(' ')
-    sum_var = 0
-    for el in data_list:
-        try:
-            sum_var += int(el)
-        except:
-            if el == 'q':
-                yield sum_var, True
-            print("введено не число")
-            pass
-    yield sum_var, False
+def my_map(func, iterable):
+    for el in iterable:
+        yield func(el)
+
+def my_sum(iterable):
+    sum_val = 0
+    for el in iterable:
+        sum_val += el
+    return sum_val
+
 
 sum_all = 0
-stop_flag = False
 while True:
-    result, stop_flag = next(input_data())
-    sum_all += result
-    print("Общая сумма: ", sum_all)
-    if  stop_flag == True:
+    user_data = input("Введите числа разделенные пробелом(q для выхода): ")
+    data_list = user_data.split(' ')
+    if 'q' in data_list:
+        q_index = data_list.index('q')
+        try:
+            sum_all += my_sum(list(my_map(int,data_list[:q_index])))
+        except:
+            print("Введен недопустимый символ")
+            break
+        print(sum_all)
         break
-
-
+    try:
+        sum_all += my_sum(list(my_map(int,data_list)))
+    except:
+        print("Введен недопустимый символ")
+        break
+    print(sum_all)
