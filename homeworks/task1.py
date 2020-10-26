@@ -5,7 +5,8 @@
 """
 from sys import argv
 
-Output_in_hour, rate_per_hour, bonus = argv
+script_name, Output_in_hour, rate_per_hour, bonus = argv
+data = Output_in_hour, rate_per_hour, bonus
 try:
     Output_in_hour, rate_per_hour, bonus = list(map(float,data))
 except:
