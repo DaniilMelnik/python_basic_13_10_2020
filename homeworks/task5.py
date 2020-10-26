@@ -8,16 +8,11 @@ from functools import reduce
 
 def my_reduce(func, iterable):
     result = iterable[0]
-    #print(result)
-    for key, val in enumerate(iterable):
-        print(val)
-        result = func(result, val)
+    for el in range(1, len(iterable)):
+        result = func(result, iterable[el])
     return result
 
 
-#multiple_all = reduce(lambda x, y: x * y, [i for i in range(2, 11, 2)])
-#print([i for i in range(2,11,2)])
-#print(multiple_all)
 print([i for i in range(2, 11, 2)])
-multiple_all_my = my_reduce(lambda x, y: x * y, [i for i in range(2, 11, 2)])
-print(multiple_all_my)
+multiple_all = my_reduce(lambda x, y: x * y, [i for i in range(100, 1001, 2)])
+print(multiple_all)
