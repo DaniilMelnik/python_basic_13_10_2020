@@ -14,19 +14,16 @@ def sum_hours(list):
     all = 0
     for el in list:
         if el.isdigit():
-            all += sum
-        return all
+            all += int(el)
+    return all
 
 
 with open(r'files\data_task6.txt', 'r', encoding='UTF-8') as file:
     data_dict = {}
     for line in file:
         key, lect, pract, lab, = line.rstrip().split(' ')
+        key = key.replace(':','')
         data_list = [lect.replace('(л)',''), pract.replace('(пр)',''), lab.replace('(лаб)','')]
-        my_sum = sum_hours(data_list)
-        #data_dict[key] = sum([float(lect),float(pract),float(lab)])
-        print(data_list)
-        print(my_sum)
-    # for key, val in data_dict.items():
-    #     print(val)
+        data_dict[key] = sum_hours(data_list)
+    print(data_dict)
 
