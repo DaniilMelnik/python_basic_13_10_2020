@@ -7,7 +7,6 @@
 """
 import time
 
-
 class TrafficLight:
     __color = {'red': 7, 'yellow': 3, 'green': 2}
 
