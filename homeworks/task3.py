@@ -9,3 +9,25 @@
 Класс-исключение должен не позволить пользователю ввести текст (не число) и отобразить соответствующее сообщение.
 При этом работа скрипта не должна завершаться.
 """
+
+class My_except(ValueError):
+    def __init__(self, err, data):
+        self.err = err
+        self.data = data
+
+user_list = []
+while True:
+    user_input = input("Введите число ('stop' для выхода): ")
+    if user_input == 'stop':
+        print(user_list)
+        break
+    try:
+        if not user_input.isdigit():
+            raise My_except("Введено не число: ", user_input)
+        user_input = int(user_input)
+    except My_except as err:
+        print(err)
+    else:
+        user_list.append(user_input)
+
+
